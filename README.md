@@ -246,7 +246,6 @@ Al hacer login, el sistema comprueba el rol y redirige automáticamente a `app.h
 
 | Nombre | Email | Contraseña | Nivel | Objetivo |
 |---|---|---|---|---|
-| Laura Bellido | laura@bxsports.com | L1234 | Aspirante | Perder peso |
 | Maria José Fernandez | mariaj@bxsports.com | M1234 | Iniciado | Perder peso |
 | Alejandro Bellido | alejandro@bxsports.com | password | Campeón | Ganar músculo |
 | Laureano Bellido | laureano@bxsports.com | L1234 | Iniciado | Mantenimiento |
