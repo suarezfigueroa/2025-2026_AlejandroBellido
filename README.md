@@ -161,12 +161,84 @@ La sesión del usuario en el cliente se gestiona con `sessionStorage`, almacenan
 
 #### Diagrama Entidad-Relación
 
-```
-USUARIOS ||--o{ CHECKINS : "realiza"
-USUARIOS }o--|| NIVELES : "tiene asignado"
-EJERCICIOS }o--|| NIVELES : "pertenece a"
-DIETA }o--|| NIVELES : "pertenece a"
-CONTACTO (tabla independiente)
+```mermaid
+erDiagram
+    USUARIOS {
+        int id PK
+        string nombre
+        string apellidos
+        string email
+        string password
+        decimal peso
+        int altura
+        int edad
+        enum sexo
+        enum dias_entreno
+        enum objetivo
+        enum rol
+        int nivel_id FK
+        string foto
+        timestamp created_at
+    }
+    NIVELES {
+        int id PK
+        string nombre
+        string descripcion
+        decimal imc_min
+        decimal imc_max
+        int dias_min
+        int dias_max
+        string color
+    }
+    EJERCICIOS {
+        int id PK
+        string nombre
+        text descripcion
+        enum categoria
+        int nivel_id FK
+        string imagen
+        int series
+        string repeticiones
+        int descanso
+        string dia
+        string grupo_muscular
+    }
+    DIETA {
+        int id PK
+        enum comida
+        string nombre
+        text ingredientes
+        int calorias
+        int proteinas
+        int carbohidratos
+        int grasas
+        int nivel_id FK
+        enum objetivo
+        string hora
+    }
+    CHECKINS {
+        int id PK
+        int usuario_id FK
+        decimal peso
+        int altura
+        decimal imc
+        int nivel_id FK
+        timestamp fecha
+    }
+    CONTACTO {
+        int id PK
+        string nombre
+        string email
+        string asunto
+        text mensaje
+        timestamp fecha
+    }
+
+    NIVELES ||--o{ USUARIOS : "asigna nivel a"
+    NIVELES ||--o{ EJERCICIOS : "clasifica"
+    NIVELES ||--o{ DIETA : "clasifica"
+    NIVELES ||--o{ CHECKINS : "registra nivel en"
+    USUARIOS ||--o{ CHECKINS : "realiza"
 ```
 
 #### Modelo Relacional
