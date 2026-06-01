@@ -243,22 +243,17 @@ erDiagram
 
 #### Modelo Relacional
 
-```sql
-usuarios (id, nombre, apellidos, email, password, peso, altura, edad, 
-          sexo, dias_entreno, objetivo, rol, nivel_id, foto, created_at)
+**usuarios** (<u>id</u>, nombre, apellidos, email, password, peso, altura, edad, sexo, dias_entreno, objetivo, rol, nivel_id→niveles, foto, created_at)
 
-niveles (id, nombre, descripcion, imc_min, imc_max, dias_min, dias_max, color)
+**niveles** (<u>id</u>, nombre, descripcion, imc_min, imc_max, dias_min, dias_max, color)
 
-ejercicios (id, nombre, descripcion, categoria, nivel_id, imagen, 
-            series, repeticiones, descanso, dia, grupo_muscular)
+**ejercicios** (<u>id</u>, nombre, descripcion, categoria, nivel_id→niveles, imagen, series, repeticiones, descanso, dia, grupo_muscular)
 
-dieta (id, comida, nombre, ingredientes, calorias, proteinas, 
-       carbohidratos, grasas, nivel_id, objetivo, hora)
+**dieta** (<u>id</u>, comida, nombre, ingredientes, calorias, proteinas, carbohidratos, grasas, nivel_id→niveles, objetivo, hora)
 
-checkins (id, usuario_id, peso, altura, imc, nivel_id, fecha)
+**checkins** (<u>id</u>, usuario_id→usuarios, peso, altura, imc, nivel_id→niveles, fecha)
 
-contacto (id, nombre, email, asunto, mensaje, fecha)
-```
+**contacto** (<u>id</u>, nombre, email, asunto, mensaje, fecha)
 
 **Claves foráneas:**
 - `usuarios.nivel_id` → `niveles.id`
